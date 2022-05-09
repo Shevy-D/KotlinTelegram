@@ -102,7 +102,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
                 ProfileDrawerItem().withName("Dmitriy Shevyakov")
-                    .withEmail("+79519265144")
+                    .withEmail("+79511234567")
             ).build()
     }
 }
