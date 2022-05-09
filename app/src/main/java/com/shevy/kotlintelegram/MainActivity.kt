@@ -104,8 +104,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, position.toString(), Toast.LENGTH_LONG).show()
                     return false
                 }
-            })
-            .build()
+            }).build()
     }
 
     private fun createHeader() {
