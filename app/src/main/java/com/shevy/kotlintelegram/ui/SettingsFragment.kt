@@ -6,18 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.shevy.kotlintelegram.R
-import com.shevy.kotlintelegram.databinding.FragmentChatBinding
+import com.shevy.kotlintelegram.databinding.FragmentSettingsBinding
 
-class ChatFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private lateinit var mBinding: FragmentChatBinding
+    private lateinit var mBinding: FragmentSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mBinding = FragmentChatBinding.inflate(layoutInflater)
-        return inflater.inflate(R.layout.fragment_chat, container, false)
+        mBinding = FragmentSettingsBinding.inflate(layoutInflater)
+        return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
     override fun onResume() {
