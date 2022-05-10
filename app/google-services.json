@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "656819483929",
+    "project_id": "kotlintelegram-a578c",
+    "storage_bucket": "kotlintelegram-a578c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656819483929:android:a33983631e8df7f8cb8188",
+        "android_client_info": {
+          "package_name": "com.shevy.kotlintelegram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656819483929-aeh0ilrb6espog4hu90p8edfh399qvrh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu1SWhoIlDnls3wgksy2QbyY8Lho90Tdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656819483929-aeh0ilrb6espog4hu90p8edfh399qvrh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
