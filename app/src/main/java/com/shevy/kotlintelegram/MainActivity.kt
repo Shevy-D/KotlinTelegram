@@ -1,8 +1,10 @@
 package com.shevy.kotlintelegram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import com.shevy.kotlintelegram.activities.RegisterActivity
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
 import com.shevy.kotlintelegram.ui.fragments.ChatFragment
 import com.shevy.kotlintelegram.ui.objects.AppDrawer
@@ -27,10 +29,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
-        setSupportActionBar(mToolbar)
-        mAppDrawer.create()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.dataContainer, ChatFragment()).commit()
+        if (false) {
+            setSupportActionBar(mToolbar)
+            mAppDrawer.create()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.dataContainer, ChatFragment()).commit()
+        } else {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun initFields() {
