@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/header.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ic_btn_action_menu.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ripple_effect.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_chat.xml" value="0.2" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/menu/settings_action_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
