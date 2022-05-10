@@ -8,6 +8,8 @@ import com.shevy.kotlintelegram.activities.RegisterActivity
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
 import com.shevy.kotlintelegram.ui.fragments.ChatFragment
 import com.shevy.kotlintelegram.ui.objects.AppDrawer
+import com.shevy.kotlintelegram.utilits.replaceActivity
+import com.shevy.kotlintelegram.utilits.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,11 +34,9 @@ class MainActivity : AppCompatActivity() {
         if (false) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.dataContainer, ChatFragment()).commit()
+            replaceFragment(ChatFragment())
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            replaceActivity(RegisterActivity())
         }
     }
 

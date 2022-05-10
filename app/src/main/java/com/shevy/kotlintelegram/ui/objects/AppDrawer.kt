@@ -13,6 +13,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.ui.fragments.SettingsFragment
+import com.shevy.kotlintelegram.utilits.replaceFragment
 
 class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
 
@@ -85,10 +86,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
-                        7 -> mainActivity.supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.dataContainer, SettingsFragment()).commit()
-
+                        7 -> mainActivity.replaceFragment(SettingsFragment())
                     }
                     return false
                 }
