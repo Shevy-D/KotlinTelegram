@@ -1,9 +1,5 @@
 package com.shevy.kotlintelegram.ui.fragments
 
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.utilits.AppTextWatcher

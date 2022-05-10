@@ -1,8 +1,7 @@
 package com.shevy.kotlintelegram
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.shevy.kotlintelegram.activities.RegisterActivity
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
