@@ -47,11 +47,11 @@
     <EditText
         android:id="@+id/register_input_code"
         style="@style/editText"
+        android:layout_width="wrap_content"
         android:layout_margin="@dimen/horizontal_margin"
         android:autofillHints=""
         android:gravity="center"
         android:hint="@string/register_hint_default_code"
-        android:textColorHint="@color/grey"
         android:maxLines="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

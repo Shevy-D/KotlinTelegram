@@ -8,10 +8,11 @@
 
     <EditText
         android:id="@+id/register_input_phone_number"
+        style="@style/editText"
+        android:hint="@string/register_phone_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/editText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/register_btn_next"
@@ -19,9 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/horizontal_margin"
         android:backgroundTint="@color/colorPrimary"
+        android:contentDescription="@string/description_register_button_next"
         android:src="@drawable/ic_btn_next"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/description_register_button_next" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
