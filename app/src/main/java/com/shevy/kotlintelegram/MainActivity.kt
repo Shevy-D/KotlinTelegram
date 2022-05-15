@@ -60,20 +60,35 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-            && resultCode == RESULT_OK && data != null) {
+            && resultCode == RESULT_OK && data != null
+        ) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(CURRENT_UID)
-            path.putFile(uri).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showToast(getString(R.string.toast_data_update))
+            path.putFile(uri).addOnCompleteListener { task1 ->
+                if (task1.isSuccessful) {
+                    //showToast(getString(R.string.toast_data_update))
+                    path.downloadUrl.addOnCompleteListener { task2 ->
+                        if (task2.isSuccessful) {
+                            val photoUrl = task2.result.toString()
+                            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
+                                .child(CHILD_PHOTO_URL).setValue(photoUrl)
+                                .addOnCompleteListener { task3 ->
+                                    if (task3.isSuccessful) {
+                                        showToast(getString(R.string.toast_data_update))
+                                        USER.photoUrl = photoUrl
+                                    }
+                                }
+                        }
+                    }
                 }
             }
         }
     }
 
     fun hideKeyBoard() {
-        val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm: InputMethodManager =
+            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
     }
 }
