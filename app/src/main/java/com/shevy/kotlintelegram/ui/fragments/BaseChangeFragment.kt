@@ -6,19 +6,20 @@ import androidx.fragment.app.Fragment
 import com.shevy.kotlintelegram.MainActivity
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.utilits.APP_ACTIVITY
+import com.shevy.kotlintelegram.utilits.hideKeyBoard
 
 open class BaseChangeFragment (layout: Int) : Fragment(layout) {
 
     override fun onStart() {
         super.onStart()
         setHasOptionsMenu(true)
-        (activity as MainActivity).mAppDrawer.disableDrawer()
+        APP_ACTIVITY.mAppDrawer.disableDrawer()
+        hideKeyBoard()
     }
 
     override fun onStop() {
         super.onStop()
         APP_ACTIVITY.mAppDrawer.enableDrawer()
-        APP_ACTIVITY.hideKeyBoard()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
