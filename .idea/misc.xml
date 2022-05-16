@@ -8,10 +8,12 @@
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ripple_effect.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/contact_item.xml" value="0.2" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_change_bio.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_change_name.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_change_username.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_chat.xml" value="0.2" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_contacts.xml" value="0.16" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_enter_code.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_enter_phone_number.xml" value="0.19011406844106463" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
