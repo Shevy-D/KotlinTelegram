@@ -12,7 +12,6 @@ import com.shevy.kotlintelegram.ui.objects.AppDrawer
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
