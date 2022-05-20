@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/bg_receiving_message.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/bg_user_message.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/header.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ic_btn_action_menu.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ic_send.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/drawable/ripple_effect.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/activity_register.xml" value="0.1" />
@@ -17,6 +20,9 @@
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_enter_code.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_enter_phone_number.xml" value="0.19011406844106463" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/fragment_single_chat.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/message_item.xml" value="0.1" />
+        <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/layout/toolbar_info.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/menu/settings_action_menu.xml" value="0.1" />
         <entry key="..\:/Users/dmitr/AndroidStudioProjects/KotlinTelegram/app/src/main/res/menu/settings_menu_confirm.xml" value="0.1" />
       </map>
