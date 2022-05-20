@@ -7,10 +7,12 @@ enum class AppStates(val state: String) {
 
     companion object {
         fun updateState(appState: AppStates) {
-            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_STATE)
-                .setValue(appState.state)
-                .addOnSuccessListener { USER.state = appState.state }
-                .addOnFailureListener { showToast(it.message.toString()) }
+            if (AUTH.currentUser != null) {
+                REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_STATE)
+                    .setValue(appState.state)
+                    .addOnSuccessListener { USER.state = appState.state }
+                    .addOnFailureListener { showToast(it.message.toString()) }
+            }
         }
     }
 }
