@@ -10,4 +10,5 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
         super.onResume()
         APP_ACTIVITY.title = "Чаты"
     }
+
 }
