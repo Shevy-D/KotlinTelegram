@@ -1,5 +1,7 @@
 package com.shevy.kotlintelegram.utilits
 
+import com.shevy.kotlintelegram.database.*
+
 enum class AppStates(val state: String) {
     ONLINE("В сети"),
     OFFLINE("был недавно"),

@@ -6,6 +6,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.shevy.kotlintelegram.MainActivity
 import com.shevy.kotlintelegram.R
+import com.shevy.kotlintelegram.database.AUTH
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import java.util.concurrent.TimeUnit

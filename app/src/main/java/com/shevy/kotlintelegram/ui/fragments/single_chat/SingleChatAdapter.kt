@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.shevy.kotlintelegram.R
+import com.shevy.kotlintelegram.database.CURRENT_UID
 import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.message_item.view.*

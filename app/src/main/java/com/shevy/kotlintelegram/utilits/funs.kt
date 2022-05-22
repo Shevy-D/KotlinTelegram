@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.shevy.kotlintelegram.MainActivity
 import com.shevy.kotlintelegram.R
+import com.shevy.kotlintelegram.database.updatePhonesToDatabase
 import com.shevy.kotlintelegram.models.CommonModel
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat

@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.shevy.kotlintelegram.database.AUTH
+import com.shevy.kotlintelegram.database.initFirebase
+import com.shevy.kotlintelegram.database.initUser
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
 import com.shevy.kotlintelegram.ui.fragments.MainFragment
 import com.shevy.kotlintelegram.ui.fragments.register.EnterPhoneNumberFragment

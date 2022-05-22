@@ -18,6 +18,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.shevy.kotlintelegram.R
+import com.shevy.kotlintelegram.database.USER
 import com.shevy.kotlintelegram.ui.fragments.ContactsFragment
 import com.shevy.kotlintelegram.ui.fragments.SettingsFragment
 import com.shevy.kotlintelegram.utilits.*
