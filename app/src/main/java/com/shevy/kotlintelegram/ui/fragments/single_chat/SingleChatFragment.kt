@@ -2,6 +2,7 @@ package com.shevy.kotlintelegram.ui.fragments.single_chat
 
 import android.view.View
 import android.widget.AbsListView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.ChildEventListener
@@ -30,12 +31,18 @@ class SingleChatFragment(private val contact: CommonModel) :
     private var mIsScrolling = false
     private var mSmoothScrollToPosition = true
     private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var mLayoutManager: LinearLayoutManager
 
     override fun onResume() {
         super.onResume()
-        mSwipeRefreshLayout = chat_swipe_refresh
+        initFields()
         initToolbar()
         initRecycleView()
+    }
+
+    private fun initFields() {
+        mSwipeRefreshLayout = chat_swipe_refresh
+        mLayoutManager = LinearLayoutManager(this.context)
     }
 
     private fun initRecycleView() {
@@ -46,23 +53,31 @@ class SingleChatFragment(private val contact: CommonModel) :
             .child(CURRENT_UID)
             .child(contact.id)
         mRecyclerView.adapter = mAdapter
-
+        mRecyclerView.setHasFixedSize(true)
+        mRecyclerView.isNestedScrollingEnabled = false
+        mRecyclerView.layoutManager = mLayoutManager
         mMessagesListener = AppChildEventListener {
-            mAdapter.addItem(it.getCommonModel(), mSmoothScrollToPosition) {
-                if (mSmoothScrollToPosition) {
+            val message = it.getCommonModel()
+
+            if (mSmoothScrollToPosition) {
+                mAdapter.addItemToBottom(message) {
                     mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
                 }
-                mSwipeRefreshLayout.isRefreshing = false
+            } else {
+                mAdapter.addItemToTop(message) {
+                    mSwipeRefreshLayout.isRefreshing = false
+                }
             }
-        }
 
+        }
         mRefMessages.limitToLast(mCountMessages).addChildEventListener(mMessagesListener)
 
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (mIsScrolling && dy < 0) {
+                println(mRecyclerView.recycledViewPool.getRecycledViewCount(0))
+                if (mIsScrolling && dy < 0 && mLayoutManager.findFirstVisibleItemPosition() <= 3) {
                     updateData()
                 }
             }
@@ -74,6 +89,8 @@ class SingleChatFragment(private val contact: CommonModel) :
                 }
             }
         })
+
+
         mSwipeRefreshLayout.setOnRefreshListener { updateData() }
     }
 
@@ -93,18 +110,26 @@ class SingleChatFragment(private val contact: CommonModel) :
             initInfoToolbar()
         }
 
-        mRefUser = REF_DATABASE_ROOT.child(NODE_USERS).child(contact.id)
+        mRefUser = REF_DATABASE_ROOT.child(
+            NODE_USERS
+        ).child(contact.id)
         mRefUser.addValueEventListener(mListenerInfoToolbar)
+
         chat_btn_send_message.setOnClickListener {
             mSmoothScrollToPosition = true
             val message = chat_input_message.text.toString()
             if (message.isEmpty()) {
-                showToast("Введите сообщение")
-            } else sendMessage(message, contact.id, TYPE_TEXT) {
+                showToast("ВВедите сообщение")
+            } else sendMessage(
+                message,
+                contact.id,
+                TYPE_TEXT
+            ) {
                 chat_input_message.setText("")
             }
         }
     }
+
 
     private fun initInfoToolbar() {
         if (mReceivingUser.fullname.isEmpty()) {
@@ -120,7 +145,5 @@ class SingleChatFragment(private val contact: CommonModel) :
         mToolbarInfo.visibility = View.GONE
         mRefUser.removeEventListener(mListenerInfoToolbar)
         mRefMessages.removeEventListener(mMessagesListener)
-
-        println()
     }
 }
