@@ -1,17 +1,12 @@
-package com.shevy.kotlintelegram.ui.fragments
+package com.shevy.kotlintelegram.ui.fragments.register
 
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.shevy.kotlintelegram.MainActivity
 import com.shevy.kotlintelegram.R
-import com.shevy.kotlintelegram.activities.RegisterActivity
-import com.shevy.kotlintelegram.utilits.AUTH
-import com.shevy.kotlintelegram.utilits.replaceActivity
-import com.shevy.kotlintelegram.utilits.replaceFragment
-import com.shevy.kotlintelegram.utilits.showToast
+import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import java.util.concurrent.TimeUnit
 
@@ -27,7 +22,7 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
                 AUTH.signInWithCredential(credential).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showToast("Добро пожаловать")
-                        (activity as RegisterActivity).replaceActivity(MainActivity())
+                        restartActivity()
                     } else {
                         showToast(it.exception?.message.toString())
                     }
@@ -60,7 +55,7 @@ class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) 
             mPhoneNumber,
             60,
             TimeUnit.SECONDS,
-            activity as RegisterActivity,
+            APP_ACTIVITY,
             mCallback
         )
 

@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.shevy.kotlintelegram.activities.RegisterActivity
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
-import com.shevy.kotlintelegram.ui.fragments.ChatFragment
+import com.shevy.kotlintelegram.ui.fragments.MainFragment
+import com.shevy.kotlintelegram.ui.fragments.register.EnterPhoneNumberFragment
 import com.shevy.kotlintelegram.ui.objects.AppDrawer
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.coroutines.CoroutineScope
@@ -36,12 +36,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFunc() {
+        setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
-            setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(ChatFragment(), false)
+            replaceFragment(MainFragment(), false)
         } else {
-            replaceActivity(RegisterActivity())
+            replaceFragment(EnterPhoneNumberFragment(), false)
         }
     }
 
@@ -71,5 +71,4 @@ class MainActivity : AppCompatActivity() {
             initContacts()
         }
     }
-
 }
