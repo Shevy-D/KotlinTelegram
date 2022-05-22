@@ -58,11 +58,13 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
         //notifyDataSetChanged()
     }
 
-    fun addItem(item:CommonModel){
+    fun addItem(item: CommonModel) {
         val newList = mutableListOf<CommonModel>()
         newList.addAll(mListMessagesCache)
-        newList.add(item)
-        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mListMessagesCache,newList))
+
+        if (!newList.contains(item)) newList.add(item)
+        newList.sortBy { it.timeStamp.toString() }
+        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mListMessagesCache, newList))
         mDiffResult.dispatchUpdatesTo(this)
         mListMessagesCache = newList
     }
