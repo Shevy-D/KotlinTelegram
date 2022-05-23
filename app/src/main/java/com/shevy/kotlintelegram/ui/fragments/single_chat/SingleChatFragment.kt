@@ -17,6 +17,7 @@ import com.shevy.kotlintelegram.database.*
 import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
 import com.shevy.kotlintelegram.ui.fragments.BaseFragment
+import com.shevy.kotlintelegram.ui.fragments.message_recycler_view.views.AppViewFactory
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -123,11 +124,11 @@ class SingleChatFragment(private val contact: CommonModel) :
             val message = it.getCommonModel()
 
             if (mSmoothScrollToPosition) {
-                mAdapter.addItemToBottom(message) {
+                mAdapter.addItemToBottom(AppViewFactory.getView(message)) {
                     mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
                 }
             } else {
-                mAdapter.addItemToTop(message) {
+                mAdapter.addItemToTop(AppViewFactory.getView(message)) {
                     mSwipeRefreshLayout.isRefreshing = false
                 }
             }
