@@ -9,8 +9,8 @@ import com.shevy.kotlintelegram.database.AUTH
 import com.shevy.kotlintelegram.database.initFirebase
 import com.shevy.kotlintelegram.database.initUser
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
-import com.shevy.kotlintelegram.ui.fragments.MainFragment
-import com.shevy.kotlintelegram.ui.fragments.register.EnterPhoneNumberFragment
+import com.shevy.kotlintelegram.ui.screens.MainFragment
+import com.shevy.kotlintelegram.ui.screens.register.EnterPhoneNumberFragment
 import com.shevy.kotlintelegram.ui.objects.AppDrawer
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments.register
+package com.shevy.kotlintelegram.ui.screens.register
 
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.PhoneAuthCredential

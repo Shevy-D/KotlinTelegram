@@ -1,6 +1,6 @@
-package com.shevy.kotlintelegram.ui.fragments.message_recycler_view.views
+package com.shevy.kotlintelegram.ui.message_recycler_view.views
 
-data class ViewImageMessage(
+data class ViewVoiceMessage(
     override val id: String,
     override val from: String,
     override val timeStamp: String,
@@ -9,7 +9,7 @@ data class ViewImageMessage(
 ) : MessageView {
 
     override fun getTypeView(): Int {
-        return MessageView.MESSAGE_IMAGE
+        return MessageView.MESSAGE_VOICE
     }
 
     override fun equals(other: Any?): Boolean {

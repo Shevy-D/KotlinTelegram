@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments
+package com.shevy.kotlintelegram.ui.screens
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
 import com.shevy.kotlintelegram.models.CommonModel
-import com.shevy.kotlintelegram.ui.fragments.single_chat.SingleChatFragment
+import com.shevy.kotlintelegram.ui.screens.single_chat.SingleChatFragment
 import com.shevy.kotlintelegram.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.contact_item.view.*

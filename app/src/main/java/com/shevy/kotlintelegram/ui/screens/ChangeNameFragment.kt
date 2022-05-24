@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments
+package com.shevy.kotlintelegram.ui.screens
 
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.USER

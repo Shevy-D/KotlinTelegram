@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments.single_chat
+package com.shevy.kotlintelegram.ui.screens.single_chat
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,8 +16,8 @@ import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
 import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
-import com.shevy.kotlintelegram.ui.fragments.BaseFragment
-import com.shevy.kotlintelegram.ui.fragments.message_recycler_view.views.AppViewFactory
+import com.shevy.kotlintelegram.ui.screens.BaseFragment
+import com.shevy.kotlintelegram.ui.message_recycler_view.views.AppViewFactory
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -224,5 +224,6 @@ class SingleChatFragment(private val contact: CommonModel) :
     override fun onDestroyView() {
         super.onDestroyView()
         mAppVoiceRecorder.releaseRecorder()
+        mAdapter.onDestroy()
     }
 }

@@ -13,6 +13,7 @@ import com.shevy.kotlintelegram.models.UserModel
 import com.shevy.kotlintelegram.utilits.APP_ACTIVITY
 import com.shevy.kotlintelegram.utilits.AppValueEventListener
 import com.shevy.kotlintelegram.utilits.showToast
+import java.io.File
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
@@ -185,4 +186,11 @@ fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String, typeMe
             sendMessageAsFile(receivedID, it, messageKey, typeMessage)
         }
     }
+}
+
+fun getFileFromStorage(mFile: File, fileUrl: String, function: () -> Unit) {
+    val path = REF_STORAGE_ROOT.storage.getReference(fileUrl)
+    path.getFile(mFile)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
 }

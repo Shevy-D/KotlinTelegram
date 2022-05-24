@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments.message_recycler_view.views
+package com.shevy.kotlintelegram.ui.message_recycler_view.views
 
 import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.utilits.TYPE_MESSAGE_IMAGE

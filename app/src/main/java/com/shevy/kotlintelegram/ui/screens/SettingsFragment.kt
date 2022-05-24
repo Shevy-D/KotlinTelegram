@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.fragments
+package com.shevy.kotlintelegram.ui.screens
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent

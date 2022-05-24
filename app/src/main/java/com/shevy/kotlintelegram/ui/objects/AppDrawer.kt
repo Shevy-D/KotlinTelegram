@@ -4,8 +4,6 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -19,8 +17,8 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.USER
-import com.shevy.kotlintelegram.ui.fragments.ContactsFragment
-import com.shevy.kotlintelegram.ui.fragments.SettingsFragment
+import com.shevy.kotlintelegram.ui.screens.ContactsFragment
+import com.shevy.kotlintelegram.ui.screens.SettingsFragment
 import com.shevy.kotlintelegram.utilits.*
 
 class AppDrawer {
