@@ -57,7 +57,7 @@ class SingleChatFragment(private val contact: CommonModel) :
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
-        mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_choice)
+        mBottomSheetBehavior= BottomSheetBehavior.from(bottom_sheet_choice)
         mBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         mAppVoiceRecorder = AppVoiceRecorder()
         mSwipeRefreshLayout = chat_swipe_refresh
@@ -96,13 +96,7 @@ class SingleChatFragment(private val contact: CommonModel) :
                         chat_input_message.setText("")
                         chat_btn_voice.colorFilter = null
                         mAppVoiceRecorder.stopRecord { file, messageKey ->
-
-                            uploadFileToStorage(
-                                Uri.fromFile(file),
-                                messageKey,
-                                contact.id,
-                                TYPE_MESSAGE_VOICE
-                            )
+                            uploadFileToStorage(Uri.fromFile(file),messageKey,contact.id, TYPE_MESSAGE_VOICE)
                             mSmoothScrollToPosition = true
                         }
                     }
@@ -110,6 +104,7 @@ class SingleChatFragment(private val contact: CommonModel) :
                 true
             }
         }
+
     }
 
     private fun attach() {
@@ -118,11 +113,12 @@ class SingleChatFragment(private val contact: CommonModel) :
         btn_attach_image.setOnClickListener { attachImage() }
     }
 
-    private fun attachFile() {
+    private fun attachFile(){
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "*/*"
         startActivityForResult(intent, PICK_FILE_REQUEST_CODE)
     }
+
 
     private fun attachImage() {
         CropImage.activity()
@@ -176,6 +172,7 @@ class SingleChatFragment(private val contact: CommonModel) :
             }
         })
 
+
         mSwipeRefreshLayout.setOnRefreshListener { updateData() }
     }
 
@@ -215,6 +212,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         }
     }
 
+
     private fun initInfoToolbar() {
         if (mReceivingUser.fullname.isEmpty()) {
             mToolbarInfo.toolbar_chat_fullname.text = contact.fullname
@@ -225,6 +223,7 @@ class SingleChatFragment(private val contact: CommonModel) :
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        /* Активность которая запускается для получения картинки для фото пользователя */
         super.onActivityResult(requestCode, resultCode, data)
         if (data!=null){
             when(requestCode){
@@ -238,12 +237,15 @@ class SingleChatFragment(private val contact: CommonModel) :
                 PICK_FILE_REQUEST_CODE -> {
                     val uri = data.data
                     val messageKey = getMessageKey(contact.id)
-                    uri?.let { uploadFileToStorage(it,messageKey,contact.id, TYPE_MESSAGE_FILE) }
+                    val filename = getFilenameFromUri(uri!!)
+                    uploadFileToStorage(uri,messageKey,contact.id, TYPE_MESSAGE_FILE,filename)
                     mSmoothScrollToPosition = true
                 }
             }
         }
     }
+
+
 
     override fun onPause() {
         super.onPause()
