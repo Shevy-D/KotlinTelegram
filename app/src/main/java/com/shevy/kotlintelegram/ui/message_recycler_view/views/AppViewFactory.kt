@@ -19,14 +19,14 @@ class AppViewFactory {
                     message.id,
                     message.from,
                     message.timeStamp.toString(),
-                    message.fileUrl,
-                    message.text
+                    message.fileUrl
                 )
                 TYPE_MESSAGE_FILE -> ViewFileMessage(
                     message.id,
                     message.from,
                     message.timeStamp.toString(),
-                    message.fileUrl
+                    message.fileUrl,
+                    message.text
                 )
                 else -> ViewTextMessage(
                     message.id,
