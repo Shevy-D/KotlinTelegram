@@ -9,7 +9,7 @@ import com.shevy.kotlintelegram.database.AUTH
 import com.shevy.kotlintelegram.database.initFirebase
 import com.shevy.kotlintelegram.database.initUser
 import com.shevy.kotlintelegram.databinding.ActivityMainBinding
-import com.shevy.kotlintelegram.ui.screens.MainFragment
+import com.shevy.kotlintelegram.ui.screens.main_list.MainListFragment
 import com.shevy.kotlintelegram.ui.screens.register.EnterPhoneNumberFragment
 import com.shevy.kotlintelegram.ui.objects.AppDrawer
 import com.shevy.kotlintelegram.utilits.*
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(MainFragment(), false)
+            replaceFragment(MainListFragment(), false)
         } else {
             replaceFragment(EnterPhoneNumberFragment(), false)
         }
