@@ -1,7 +1,6 @@
 package com.shevy.kotlintelegram.ui.screens.single_chat
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.*
@@ -18,7 +17,7 @@ import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
 import com.shevy.kotlintelegram.ui.screens.BaseFragment
 import com.shevy.kotlintelegram.ui.message_recycler_view.views.AppViewFactory
-import com.shevy.kotlintelegram.ui.screens.settings.ChangeNameFragment
+import com.shevy.kotlintelegram.ui.screens.main_list.MainListFragment
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -272,7 +271,14 @@ class SingleChatFragment(private val contact: CommonModel) :
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
+            R.id.menu_clear_chat -> clearChat(contact.id){
+                showToast("Чат очищен")
+                replaceFragment(MainListFragment())
+            }
+            R.id.menu_delete_chat -> deleteChat(contact.id){
+                showToast("Чат удален")
+                replaceFragment(MainListFragment())
+            }
         }
         return true
     }
