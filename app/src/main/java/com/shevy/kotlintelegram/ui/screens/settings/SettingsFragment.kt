@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.screens
+package com.shevy.kotlintelegram.ui.screens.settings
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
+import com.shevy.kotlintelegram.ui.screens.BaseFragment
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView

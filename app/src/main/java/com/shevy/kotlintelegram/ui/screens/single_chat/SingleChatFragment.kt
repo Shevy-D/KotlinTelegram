@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.AbsListView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +18,7 @@ import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
 import com.shevy.kotlintelegram.ui.screens.BaseFragment
 import com.shevy.kotlintelegram.ui.message_recycler_view.views.AppViewFactory
+import com.shevy.kotlintelegram.ui.screens.settings.ChangeNameFragment
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -57,7 +57,8 @@ class SingleChatFragment(private val contact: CommonModel) :
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
-        mBottomSheetBehavior= BottomSheetBehavior.from(bottom_sheet_choice)
+        setHasOptionsMenu(true)
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_choice)
         mBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         mAppVoiceRecorder = AppVoiceRecorder()
         mSwipeRefreshLayout = chat_swipe_refresh
@@ -96,7 +97,12 @@ class SingleChatFragment(private val contact: CommonModel) :
                         chat_input_message.setText("")
                         chat_btn_voice.colorFilter = null
                         mAppVoiceRecorder.stopRecord { file, messageKey ->
-                            uploadFileToStorage(Uri.fromFile(file),messageKey,contact.id, TYPE_MESSAGE_VOICE)
+                            uploadFileToStorage(
+                                Uri.fromFile(file),
+                                messageKey,
+                                contact.id,
+                                TYPE_MESSAGE_VOICE
+                            )
                             mSmoothScrollToPosition = true
                         }
                     }
@@ -113,7 +119,7 @@ class SingleChatFragment(private val contact: CommonModel) :
         btn_attach_image.setOnClickListener { attachImage() }
     }
 
-    private fun attachFile(){
+    private fun attachFile() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "*/*"
         startActivityForResult(intent, PICK_FILE_REQUEST_CODE)
@@ -214,8 +220,6 @@ class SingleChatFragment(private val contact: CommonModel) :
     }
 
 
-
-
     private fun initInfoToolbar() {
         if (mReceivingUser.fullname.isEmpty()) {
             mToolbarInfo.toolbar_chat_fullname.text = contact.fullname
@@ -228,12 +232,12 @@ class SingleChatFragment(private val contact: CommonModel) :
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         /* Активность которая запускается для получения картинки для фото пользователя */
         super.onActivityResult(requestCode, resultCode, data)
-        if (data!=null){
-            when(requestCode){
+        if (data != null) {
+            when (requestCode) {
                 CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                     val uri = CropImage.getActivityResult(data).uri
                     val messageKey = getMessageKey(contact.id)
-                    uploadFileToStorage(uri,messageKey,contact.id, TYPE_MESSAGE_IMAGE)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
                     mSmoothScrollToPosition = true
                 }
 
@@ -241,13 +245,12 @@ class SingleChatFragment(private val contact: CommonModel) :
                     val uri = data.data
                     val messageKey = getMessageKey(contact.id)
                     val filename = getFilenameFromUri(uri!!)
-                    uploadFileToStorage(uri,messageKey,contact.id, TYPE_MESSAGE_FILE,filename)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE, filename)
                     mSmoothScrollToPosition = true
                 }
             }
         }
     }
-
 
 
     override fun onPause() {
@@ -261,5 +264,16 @@ class SingleChatFragment(private val contact: CommonModel) :
         super.onDestroyView()
         mAppVoiceRecorder.releaseRecorder()
         mAdapter.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.single_chat_action_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+        }
+        return true
     }
 }

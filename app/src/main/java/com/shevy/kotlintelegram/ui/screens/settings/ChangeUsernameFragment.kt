@@ -1,7 +1,8 @@
-package com.shevy.kotlintelegram.ui.screens
+package com.shevy.kotlintelegram.ui.screens.settings
 
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
+import com.shevy.kotlintelegram.ui.screens.BaseChangeFragment
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_username.*
 import java.util.*

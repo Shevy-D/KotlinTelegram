@@ -18,7 +18,7 @@ import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.USER
 import com.shevy.kotlintelegram.ui.screens.ContactsFragment
-import com.shevy.kotlintelegram.ui.screens.SettingsFragment
+import com.shevy.kotlintelegram.ui.screens.settings.SettingsFragment
 import com.shevy.kotlintelegram.utilits.*
 
 class AppDrawer {
