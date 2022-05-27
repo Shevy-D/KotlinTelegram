@@ -7,7 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
-import com.shevy.kotlintelegram.ui.screens.BaseFragment
+import com.shevy.kotlintelegram.ui.screens.base.BaseFragment
 import com.shevy.kotlintelegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView

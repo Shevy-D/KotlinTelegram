@@ -1,4 +1,4 @@
-package com.shevy.kotlintelegram.ui.screens
+package com.shevy.kotlintelegram.ui.screens.base
 
 import androidx.fragment.app.Fragment
 import com.shevy.kotlintelegram.utilits.APP_ACTIVITY

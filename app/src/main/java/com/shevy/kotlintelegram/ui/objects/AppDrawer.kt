@@ -17,7 +17,8 @@ import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.USER
-import com.shevy.kotlintelegram.ui.screens.ContactsFragment
+import com.shevy.kotlintelegram.ui.screens.contacts.ContactsFragment
+import com.shevy.kotlintelegram.ui.screens.groups.AddContactsFragment
 import com.shevy.kotlintelegram.ui.screens.settings.SettingsFragment
 import com.shevy.kotlintelegram.utilits.*
 
@@ -122,6 +123,7 @@ class AppDrawer {
 
     private fun clickToItem(position: Int) {
         when (position) {
+            1 -> replaceFragment(AddContactsFragment())
             7 -> replaceFragment(SettingsFragment())
             4 -> replaceFragment(ContactsFragment())
         }

@@ -15,7 +15,7 @@ import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
 import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
-import com.shevy.kotlintelegram.ui.screens.BaseFragment
+import com.shevy.kotlintelegram.ui.screens.base.BaseFragment
 import com.shevy.kotlintelegram.ui.message_recycler_view.views.AppViewFactory
 import com.shevy.kotlintelegram.ui.screens.main_list.MainListFragment
 import com.shevy.kotlintelegram.utilits.*

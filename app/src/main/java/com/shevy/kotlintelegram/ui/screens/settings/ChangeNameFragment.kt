@@ -3,7 +3,7 @@ package com.shevy.kotlintelegram.ui.screens.settings
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.USER
 import com.shevy.kotlintelegram.database.setNameToDatabase
-import com.shevy.kotlintelegram.ui.screens.BaseChangeFragment
+import com.shevy.kotlintelegram.ui.screens.base.BaseChangeFragment
 import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_name.*
 
