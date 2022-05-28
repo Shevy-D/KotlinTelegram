@@ -9,6 +9,7 @@ import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.utilits.APP_ACTIVITY
 import com.shevy.kotlintelegram.utilits.AppValueEventListener
 import com.shevy.kotlintelegram.utilits.hideKeyBoard
+import com.shevy.kotlintelegram.utilits.replaceFragment
 import kotlinx.android.synthetic.main.fragment_add_contacts.*
 import kotlinx.android.synthetic.main.fragment_main_list.*
 
@@ -31,6 +32,7 @@ class AddContactsFragment : Fragment(R.layout.fragment_add_contacts) {
             listContacts.forEach {
                 println(it.id)
             }
+            replaceFragment(CreateGroupFragment(listContacts))
         }
     }
 
