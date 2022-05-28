@@ -5,9 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shevy.kotlintelegram.R
 import com.shevy.kotlintelegram.database.*
 import com.shevy.kotlintelegram.models.CommonModel
-import com.shevy.kotlintelegram.utilits.APP_ACTIVITY
-import com.shevy.kotlintelegram.utilits.AppValueEventListener
-import com.shevy.kotlintelegram.utilits.hideKeyBoard
+import com.shevy.kotlintelegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_main_list.*
 
 class MainListFragment : Fragment(R.layout.fragment_main_list) {
@@ -26,6 +24,7 @@ class MainListFragment : Fragment(R.layout.fragment_main_list) {
         hideKeyBoard()
         initRecyclerView()
     }
+
     private fun initRecyclerView() {
         mRecyclerView = main_list_recycle_view
         mAdapter = MainListAdapter()
@@ -35,31 +34,62 @@ class MainListFragment : Fragment(R.layout.fragment_main_list) {
             mListItems = dataSnapshot.children.map { it.getCommonModel() }
             mListItems.forEach { model ->
 
-                // 2 запрос
-                mRefUsers.child(model.id)
-                    .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot1 ->
-                        val newModel = dataSnapshot1.getCommonModel()
+                when (model.type) {
+                    TYPE_CHAT -> showChat(model)
+                    TYPE_GROUP -> showGroup(model)
+                }
 
-                        // 3 запрос
-                        mRefMessages.child(model.id).limitToLast(1)
-                            .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot2 ->
-                                val tempList = dataSnapshot2.children.map { it.getCommonModel() }
-
-                                if (tempList.isEmpty()){
-                                    newModel.lastMessage = "Чат очищен"
-                                } else {
-                                    newModel.lastMessage = tempList[0].text
-                                }
-
-                                if (newModel.fullname.isEmpty()) {
-                                    newModel.fullname = newModel.phone
-                                }
-                                mAdapter.updateListItems(newModel)
-                            })
-                    })
             }
         })
 
         mRecyclerView.adapter = mAdapter
+    }
+
+    private fun showGroup(model: CommonModel) {
+        // 2 запрос
+        REF_DATABASE_ROOT.child(NODE_GROUPS).child(model.id)
+            .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot1 ->
+                val newModel = dataSnapshot1.getCommonModel()
+
+                // 3 запрос
+                REF_DATABASE_ROOT.child(NODE_GROUPS).child(model.id).child(NODE_MESSAGES)
+                    .limitToLast(1)
+                    .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot2 ->
+                        val tempList = dataSnapshot2.children.map { it.getCommonModel() }
+
+                        if (tempList.isEmpty()) {
+                            newModel.lastMessage = "Чат очищен"
+                        } else {
+                            newModel.lastMessage = tempList[0].text
+                        }
+                        mAdapter.updateListItems(newModel)
+                    })
+            })
+    }
+
+    private fun showChat(model: CommonModel) {
+        // 2 запрос
+        mRefUsers.child(model.id)
+            .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot1 ->
+                val newModel = dataSnapshot1.getCommonModel()
+
+                // 3 запрос
+                mRefMessages.child(model.id).limitToLast(1)
+                    .addListenerForSingleValueEvent(AppValueEventListener { dataSnapshot2 ->
+                        val tempList = dataSnapshot2.children.map { it.getCommonModel() }
+
+                        if (tempList.isEmpty()) {
+                            newModel.lastMessage = "Чат очищен"
+                        } else {
+                            newModel.lastMessage = tempList[0].text
+                        }
+
+
+                        if (newModel.fullname.isEmpty()) {
+                            newModel.fullname = newModel.phone
+                        }
+                        mAdapter.updateListItems(newModel)
+                    })
+            })
     }
 }

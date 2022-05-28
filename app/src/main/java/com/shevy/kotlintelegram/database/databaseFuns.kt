@@ -12,6 +12,7 @@ import com.shevy.kotlintelegram.models.CommonModel
 import com.shevy.kotlintelegram.models.UserModel
 import com.shevy.kotlintelegram.utilits.APP_ACTIVITY
 import com.shevy.kotlintelegram.utilits.AppValueEventListener
+import com.shevy.kotlintelegram.utilits.TYPE_GROUP
 import com.shevy.kotlintelegram.utilits.showToast
 import java.io.File
 
@@ -275,8 +276,8 @@ fun saveToMainList(id: String, type: String) {
     val refUser = "$NODE_MAIN_LIST/$CURRENT_UID/$id"
     val refReceived = "$NODE_MAIN_LIST/$id/$CURRENT_UID"
 
-    val mapUser = hashMapOf<String,Any>()
-    val mapReceived = hashMapOf<String,Any>()
+    val mapUser = hashMapOf<String, Any>()
+    val mapReceived = hashMapOf<String, Any>()
 
     mapUser[CHILD_ID] = id
     mapUser[CHILD_TYPE] = type
@@ -284,7 +285,7 @@ fun saveToMainList(id: String, type: String) {
     mapReceived[CHILD_ID] = CURRENT_UID
     mapReceived[CHILD_TYPE] = type
 
-    val commonMap = hashMapOf<String,Any>()
+    val commonMap = hashMapOf<String, Any>()
     commonMap[refUser] = mapUser
     commonMap[refReceived] = mapReceived
 
@@ -325,6 +326,7 @@ fun createGroupToDatabase(
     val mapData = hashMapOf<String, Any>()
     mapData[CHILD_ID] = keyGroup
     mapData[CHILD_FULLNAME] = nameGroup
+    mapData[CHILD_PHOTO_URL] = "empty"
     val mapMembers = hashMapOf<String, Any>()
     listContacts.forEach {
         mapMembers[it.id] = USER_MEMBER
@@ -335,14 +337,37 @@ fun createGroupToDatabase(
 
     path.updateChildren(mapData)
         .addOnSuccessListener {
-            function()
             if (uri != Uri.EMPTY) {
                 putFileToStorage(uri, pathStorage) {
                     getUrlFromStorage(pathStorage) {
-                        path.child(CHILD_FILE_URL).setValue(it)
+                        path.child(CHILD_PHOTO_URL).setValue(it)
+                        addGroupsToMainList(mapData, listContacts) {
+                            function()
+                        }
                     }
+                }
+            } else {
+                addGroupsToMainList(mapData, listContacts) {
+                    function()
                 }
             }
         }
+}
+
+fun addGroupsToMainList(
+    mapData: HashMap<String, Any>,
+    listContacts: List<CommonModel>,
+    function: () -> Unit
+) {
+    val path = REF_DATABASE_ROOT.child(NODE_MAIN_LIST)
+    val map = hashMapOf<String, Any>()
+
+    map[CHILD_ID] = mapData[CHILD_ID].toString()
+    map[CHILD_TYPE] = TYPE_GROUP
+    listContacts.forEach {
+        path.child(it.id).child(map[CHILD_ID].toString()).updateChildren(map)
+    }
+    path.child(CURRENT_UID).child(map[CHILD_ID].toString()).updateChildren(map)
+        .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 }

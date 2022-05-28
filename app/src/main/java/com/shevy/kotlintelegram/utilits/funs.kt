@@ -9,7 +9,6 @@ import android.provider.OpenableColumns
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.shevy.kotlintelegram.MainActivity
 import com.shevy.kotlintelegram.R
